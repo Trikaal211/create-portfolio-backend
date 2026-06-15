@@ -15,7 +15,8 @@
     "resolveJsonModule": true
   },
   "exclude": [
-    "src/audit.ts"
+    "src/audit.ts",
+    "src/verify_live.ts"
   ],
   "include": [
     "src/**/*"
