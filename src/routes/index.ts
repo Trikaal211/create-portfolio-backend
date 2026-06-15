@@ -23,5 +23,10 @@ router.use('/dashboard', dashboardRouter);
 router.use('/upload', uploadRouter);
 router.use('/settings', settingsRouter);
 
+// System health check endpoint
+router.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 export default router;
 export { router as rootRouter };

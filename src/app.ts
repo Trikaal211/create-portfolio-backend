@@ -21,8 +21,26 @@ if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
   app.use(morgan('dev'));
 }
 
-// Enable Cross-Origin Resource Sharing
-app.use(cors());
+// Enable Cross-Origin Resource Sharing with production controls
+const allowedOrigins = [
+  'https://kiwi-click.netlify.app',
+  'https://www.kiwi-click.netlify.app',
+  'http://localhost:5173',
+  'http://localhost:5000',
+  'http://localhost:3000'
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 
 // Parse incoming payloads to JSON (with body limits)
 app.use(express.json({ limit: '10mb' }));
