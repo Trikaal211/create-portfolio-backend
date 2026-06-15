@@ -23,8 +23,8 @@ if (process.env.NODE_ENV === 'development' || !process.env.NODE_ENV) {
 
 // Enable Cross-Origin Resource Sharing with production controls
 const allowedOrigins = [
-  'https://kiwi-click.netlify.app',
-  'https://www.kiwi-click.netlify.app',
+  'https://kiwiclicks.in',
+  'https://www.kiwiclicks.in',
   'http://localhost:5173',
   'http://localhost:5000',
   'http://localhost:3000'
