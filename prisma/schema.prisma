@@ -1,0 +1,116 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model AdminUser {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("admin")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("admin_users")
+}
+
+model Blog {
+  id              String   @id @default(uuid()) @db.Uuid
+  title           String
+  slug            String   @unique
+  excerpt         String
+  content         String   @db.Text
+  featuredImage   String   @map("featured_image")
+  category        String
+  author          String
+  tags            String[]
+  published       Boolean  @default(false)
+  metaTitle       String?  @map("meta_title")
+  metaDescription String?  @map("meta_description")
+  ogImage         String?  @map("og_image")
+  keywords        String[]
+  canonicalUrl    String?  @map("canonical_url")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("blogs")
+}
+
+model TeamMember {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String
+  designation String
+  image       String
+  bio         String   @db.Text
+  linkedin    String?
+  twitter     String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("team_members")
+}
+
+model Testimonial {
+  id          String  @id @default(uuid()) @db.Uuid
+  clientName  String  @map("client_name")
+  company     String
+  designation String
+  review      String  @db.Text
+  rating      Int
+  image       String?
+
+  @@map("testimonials")
+}
+
+model ContactLead {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  email     String
+  phone     String?
+  service   String
+  budget    String?
+  message   String   @db.Text
+  status    String   @default("pending") // e.g. pending, contacted, closed
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("contact_leads")
+}
+
+model Service {
+  id            String @id @default(uuid()) @db.Uuid
+  title         String
+  slug          String @unique
+  description   String @db.Text
+  featuredImage String @map("featured_image")
+  content       String @db.Text
+
+  @@map("services")
+}
+
+model FAQ {
+  id       String @id @default(uuid()) @db.Uuid
+  question String
+  answer   String @db.Text
+  category String
+
+  @@map("faqs")
+}
+
+model AgencySettings {
+  id             String  @id @default(uuid()) @db.Uuid
+  agencyName     String  @default("KiwiClicks") @map("agency_name")
+  logoUrl        String? @map("logo_url")
+  phone          String?
+  email          String?
+  address        String? @db.Text
+  mapsLink       String? @map("maps_link")
+  facebookLink   String? @map("facebook_link")
+  instagramLink  String? @map("instagram_link")
+  linkedinLink   String? @map("linkedin_link")
+  twitterLink    String? @map("twitter_link")
+
+  @@map("agency_settings")
+}

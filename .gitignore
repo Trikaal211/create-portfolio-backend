@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Production builds
+dist/
+build/
+
+# Coverage directory used by testing tools
+coverage/
+
+# Local env configs and credentials
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+
+# Prisma generated client
+.prisma/client
+
+# Uploads and temporary files
+uploads/
+temp/
+.tmp/
+
+# IDE configurations
+.vscode/
+.idea/
+.DS_Store
