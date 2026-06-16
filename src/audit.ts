@@ -246,9 +246,9 @@ async function runAudit() {
     const settingsPayload = {
       agencyName: `KiwiClicks Audit [${testId}]`,
       logoUrl: 'https://res.cloudinary.com/demo/image/upload/sample.jpg',
-      phone: '+91-11-23310000',
-      email: 'hello@kiwiclicks.agency',
-      address: '104, Statesman House, Connaught Place, New Delhi 110001',
+      phone: '6230078396',
+      email: 'info@kiwiclicks.in',
+      address: 'Dwarka Sector 2, New Delhi – 110077, India',
       mapsLink: 'https://maps.google.com',
       facebookLink: 'https://facebook.com/kiwiclicks',
       instagramLink: 'https://instagram.com/kiwiclicks',

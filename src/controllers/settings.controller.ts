@@ -11,9 +11,9 @@ export const getSettings = catchAsync(async (req: Request, res: Response, next: 
       data: {
         agencyName: 'KiwiClicks',
         logoUrl: 'https://res.cloudinary.com/demo/image/upload/sample.jpg',
-        phone: '+91-9876543210',
-        email: 'hello@kiwiclicks.com',
-        address: 'Sector 62, Noida, Delhi NCR, India',
+        phone: '6230078396',
+        email: 'info@kiwiclicks.in',
+        address: 'Dwarka Sector 2, New Delhi – 110077, India',
         mapsLink: 'https://maps.google.com',
         facebookLink: 'https://facebook.com/kiwiclicks',
         instagramLink: 'https://instagram.com/kiwiclicks',

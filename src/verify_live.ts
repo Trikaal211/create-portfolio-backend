@@ -225,9 +225,9 @@ async function runLiveAudit() {
     console.log('\n[8] Auditing Global Settings updates...');
     const settingsPayload = {
       agencyName: 'KiwiClicks',
-      phone: '+91-11-23310000',
-      email: 'hello@kiwiclicks.agency',
-      address: 'Connaught Place, New Delhi 110001',
+      phone: '6230078396',
+      email: 'info@kiwiclicks.in',
+      address: 'Dwarka Sector 2, New Delhi – 110077, India',
       mapsLink: 'https://maps.google.com',
       facebookLink: 'https://facebook.com/kiwiclicks',
       instagramLink: 'https://instagram.com/kiwiclicks',
