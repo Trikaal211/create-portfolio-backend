@@ -193,6 +193,7 @@ async function main() {
         author: 'Aanya Patel',
         tags: ['SEO', 'AI', 'Search Engine Optimization', 'Tech Trends'],
         published: true,
+        keywords: ['SEO', 'AI', 'Core Web Vitals'],
       },
       {
         title: 'How to Build an AI Assistant for Client Intake',
@@ -204,6 +205,7 @@ async function main() {
         author: 'James Mercer',
         tags: ['AI', 'Automation', 'Agency Operations'],
         published: true,
+        keywords: ['AI Assistant', 'Client Intake', 'Automation'],
       },
       {
         title: 'Draft - Social Media Calendar Planning tips',
@@ -215,6 +217,7 @@ async function main() {
         author: 'James Mercer',
         tags: ['Marketing', 'Social Media'],
         published: false,
+        keywords: ['Social Media', 'Content Calendar', 'LinkedIn'],
       },
     ],
   });
