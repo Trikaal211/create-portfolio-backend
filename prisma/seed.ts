@@ -75,12 +75,12 @@ async function main() {
         twitter: 'https://twitter.com/bandana_strategy',
       },
       {
-        name: 'Shammy Kumar',
+        name: 'Baman Kumar',
         designation: 'Co-Founder & Growth Strategist',
-        image: '/founder.png',
-        bio: 'Co-Founder & Growth Strategist. Shammy scales local brands and startups using high-performance ad funnels, search marketing, and custom web systems.',
-        linkedin: 'https://linkedin.com/in/shammy-kumar',
-        twitter: 'https://twitter.com/shammy_ads',
+        image: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=400&h=400&q=80',
+        bio: 'Co-Founder & Growth Strategist. Baman scales local brands and startups using high-performance ad funnels, search marketing, and custom web systems.',
+        linkedin: 'https://linkedin.com/in/baman-kumar',
+        twitter: 'https://twitter.com/baman_ads',
       },
       {
         name: 'Priya Sharma',

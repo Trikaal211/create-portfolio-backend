@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { prisma } from './config/db';
 
-const API_URL = 'https://create-portfolio-backend.onrender.com/api';
+const API_URL = process.env.API_URL || 'http://localhost:5000/api';
 
 async function runLiveAudit() {
-  console.log('=== KIWICLICKS LIVE PRODUCTION RENDER API AUDIT ===\n');
+  console.log('=== KIWICLICKS API INTEGRATION AUDIT ===\n');
   console.log(`Targeting Endpoint: ${API_URL}\n`);
 
   let token = '';
@@ -21,7 +21,7 @@ async function runLiveAudit() {
       throw new Error(`Health endpoint returned status ${healthRes.status}`);
     }
   } catch (err: any) {
-    console.error('    ❌ Live Health API: Failed (Render redeployment might still be building)');
+    console.error('    ❌ Live Health API: Failed');
     console.error(`       Error: ${err.message}`);
     process.exit(1);
   }
@@ -289,7 +289,7 @@ async function runLiveAudit() {
     console.error(`       Error: ${err.message}`);
   }
 
-  console.log('\n=== KIWICLICKS LIVE RENDER INTEGRATION AUDIT COMPLETED ===\n');
+  console.log('\n=== KIWICLICKS API INTEGRATION AUDIT COMPLETED ===\n');
 }
 
 runLiveAudit();

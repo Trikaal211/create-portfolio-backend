@@ -1,5 +1,5 @@
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -8,7 +8,7 @@ generator client {
 }
 
 model AdminUser {
-  id        String   @id @default(uuid()) @db.Uuid
+  id        String   @id @default(uuid()) @db.VarChar(36)
   name      String
   email     String   @unique
   password  String
@@ -19,7 +19,7 @@ model AdminUser {
 }
 
 model Blog {
-  id              String   @id @default(uuid()) @db.Uuid
+  id              String   @id @default(uuid()) @db.VarChar(36)
   title           String
   slug            String   @unique
   excerpt         String
@@ -27,12 +27,12 @@ model Blog {
   featuredImage   String   @map("featured_image")
   category        String
   author          String
-  tags            String[]
+  tags            Json
   published       Boolean  @default(false)
   metaTitle       String?  @map("meta_title")
   metaDescription String?  @map("meta_description")
   ogImage         String?  @map("og_image")
-  keywords        String[]
+  keywords        Json
   canonicalUrl    String?  @map("canonical_url")
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")
@@ -41,7 +41,7 @@ model Blog {
 }
 
 model TeamMember {
-  id          String   @id @default(uuid()) @db.Uuid
+  id          String   @id @default(uuid()) @db.VarChar(36)
   name        String
   designation String
   image       String
@@ -54,7 +54,7 @@ model TeamMember {
 }
 
 model Testimonial {
-  id          String  @id @default(uuid()) @db.Uuid
+  id          String  @id @default(uuid()) @db.VarChar(36)
   clientName  String  @map("client_name")
   company     String
   designation String
@@ -66,7 +66,7 @@ model Testimonial {
 }
 
 model ContactLead {
-  id        String   @id @default(uuid()) @db.Uuid
+  id        String   @id @default(uuid()) @db.VarChar(36)
   name      String
   email     String
   phone     String?
@@ -80,7 +80,7 @@ model ContactLead {
 }
 
 model Service {
-  id            String @id @default(uuid()) @db.Uuid
+  id            String @id @default(uuid()) @db.VarChar(36)
   title         String
   slug          String @unique
   description   String @db.Text
@@ -91,7 +91,7 @@ model Service {
 }
 
 model FAQ {
-  id       String @id @default(uuid()) @db.Uuid
+  id       String @id @default(uuid()) @db.VarChar(36)
   question String
   answer   String @db.Text
   category String
@@ -100,7 +100,7 @@ model FAQ {
 }
 
 model AgencySettings {
-  id             String  @id @default(uuid()) @db.Uuid
+  id             String  @id @default(uuid()) @db.VarChar(36)
   agencyName     String  @default("KiwiClicks") @map("agency_name")
   logoUrl        String? @map("logo_url")
   phone          String?
