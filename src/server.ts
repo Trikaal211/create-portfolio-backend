@@ -1,6 +1,10 @@
 import './loadEnv';
 import app from './app';
 
+const dbUrl = process.env.DATABASE_URL || '';
+const maskedUrl = dbUrl.replace(/(:\/\/)([^:]+)(:[^@]+)?@/, '$1$2:***@');
+console.log(`[Runtime Config] DATABASE_URL at startup: ${maskedUrl}`);
+
 // Production-safe startup checks
 if (process.env.NODE_ENV === 'production') {
   if (!process.env.DATABASE_URL) {
