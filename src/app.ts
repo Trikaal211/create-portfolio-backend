@@ -58,6 +58,18 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Temp debug endpoint to inspect DATABASE_URL protocol
+app.get('/health/db-debug', (req, res) => {
+  const dbUrl = process.env.DATABASE_URL || '';
+  const maskedUrl = dbUrl.replace(/(:\/\/)([^:]+)(:[^@]+)?@/, '$1$2:***@');
+  res.status(200).json({
+    status: 'success',
+    database_url_masked: maskedUrl,
+    starts_with_postgres: dbUrl.startsWith('postgresql://') || dbUrl.startsWith('postgres://'),
+    protocol: dbUrl.split(':')[0]
+  });
+});
+
 // 2) Bind API Gateway Router
 app.use('/api', rootRouter);
 
