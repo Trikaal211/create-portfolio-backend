@@ -7,6 +7,7 @@ import {
   updateBlog,
   deleteBlog,
   getBlogById,
+  getBlogsByCategory,
 } from '../controllers/blog.controller';
 import { protect } from '../middlewares/auth.middleware';
 import { validate } from '../middlewares/validation.middleware';
@@ -136,6 +137,7 @@ const updateBlogSchema = z.object({
  */
 router.post('/', protect, validate(createBlogSchema), createBlog);
 router.get('/', getAllBlogs);
+router.get('/category/:category', getBlogsByCategory);
 
 /**
  * @openapi

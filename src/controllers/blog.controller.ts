@@ -178,7 +178,6 @@ export const deleteBlog = catchAsync(async (req: Request, res: Response, next: N
     data: null,
   });
 });
-
 export const getBlogById = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
   const id = req.params.id as string;
 
@@ -194,6 +193,45 @@ export const getBlogById = catchAsync(async (req: Request, res: Response, next: 
     status: 'success',
     data: {
       blog,
+    },
+  });
+});
+
+export const getBlogsByCategory = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+  const categoryParam = req.params.category as string;
+  const { published } = req.query;
+
+  // Map category param to DB value
+  const categoryMap: Record<string, string> = {
+    'design': 'Design',
+    'architecture': 'Architecture',
+    'seo': 'SEO',
+    'marketing': 'Marketing',
+    'development': 'Development',
+    'ai': 'AI',
+    'growth': 'Growth',
+  };
+
+  const category = categoryMap[categoryParam.toLowerCase()] || categoryParam;
+
+  const filter: any = { category };
+  if (published !== undefined) {
+    filter.published = published === 'true';
+  } else {
+    // Default to published: true for public category lists
+    filter.published = true;
+  }
+
+  const blogs = await prisma.blog.findMany({
+    where: filter,
+    orderBy: { createdAt: 'desc' },
+  });
+
+  res.status(200).json({
+    status: 'success',
+    results: blogs.length,
+    data: {
+      blogs,
     },
   });
 });
