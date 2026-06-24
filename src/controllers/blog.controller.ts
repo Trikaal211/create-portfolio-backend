@@ -14,7 +14,7 @@ const slugify = (text: string) => {
 };
 
 export const createBlog = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-  const { title, excerpt, content, featuredImage, category, author, tags, published, metaTitle, metaDescription, ogImage, keywords, canonicalUrl } = req.body;
+  const { title, excerpt, content, featuredImage, category, author, tags, published, metaTitle, metaDescription, ogImage, keywords, canonicalUrl, schemaMarkup } = req.body;
 
   let baseSlug = req.body.slug ? slugify(req.body.slug) : slugify(title);
   
@@ -44,6 +44,7 @@ export const createBlog = catchAsync(async (req: Request, res: Response, next: N
       ogImage,
       keywords: keywords || [],
       canonicalUrl,
+      schemaMarkup,
     },
   });
 
@@ -101,7 +102,7 @@ export const getBlogBySlug = catchAsync(async (req: Request, res: Response, next
 
 export const updateBlog = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
   const id = req.params.id as string;
-  const { title, excerpt, content, featuredImage, category, author, tags, published, metaTitle, metaDescription, ogImage, keywords, canonicalUrl } = req.body;
+  const { title, excerpt, content, featuredImage, category, author, tags, published, metaTitle, metaDescription, ogImage, keywords, canonicalUrl, schemaMarkup } = req.body;
 
   // Check if blog exists
   const existingBlog = await prisma.blog.findUnique({ where: { id } });
@@ -123,6 +124,7 @@ export const updateBlog = catchAsync(async (req: Request, res: Response, next: N
   if (ogImage !== undefined) updateData.ogImage = ogImage;
   if (keywords !== undefined) updateData.keywords = keywords;
   if (canonicalUrl !== undefined) updateData.canonicalUrl = canonicalUrl;
+  if (schemaMarkup !== undefined) updateData.schemaMarkup = schemaMarkup;
 
   // Handle slug updates if title changes or manual slug is provided
   if (req.body.slug !== undefined || (title !== undefined && title !== existingBlog.title)) {

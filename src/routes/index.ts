@@ -9,6 +9,7 @@ import { leadRouter } from './lead.routes';
 import { dashboardRouter } from './dashboard.routes';
 import { uploadRouter } from './upload.routes';
 import { settingsRouter } from './settings.routes';
+import { chatRouter } from './chat.routes';
 
 const router = Router();
 
@@ -22,6 +23,7 @@ router.use('/leads', leadRouter);
 router.use('/dashboard', dashboardRouter);
 router.use('/upload', uploadRouter);
 router.use('/settings', settingsRouter);
+router.use('/chat', chatRouter);
 
 // System health check endpoint
 router.get('/health', (req, res) => {

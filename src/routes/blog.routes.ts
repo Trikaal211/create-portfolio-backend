@@ -30,6 +30,7 @@ const createBlogSchema = z.object({
     ogImage: z.string().url().optional().or(z.literal('')).nullable(),
     keywords: z.array(z.string()).optional(),
     canonicalUrl: z.string().url().optional().or(z.literal('')).nullable(),
+    schemaMarkup: z.string().optional().nullable(),
   }),
 });
 
@@ -49,6 +50,7 @@ const updateBlogSchema = z.object({
     ogImage: z.string().url().optional().or(z.literal('')).nullable(),
     keywords: z.array(z.string()).optional(),
     canonicalUrl: z.string().url().optional().or(z.literal('')).nullable(),
+    schemaMarkup: z.string().optional().nullable(),
   }),
 });
 
